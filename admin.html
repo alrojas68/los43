@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Monitoreo de Votos de la Oposición</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Admin - Monitoreo de Votos de la Oposición</h1>
+    </header>
+    <main>
+        <div id="login-form">
+            <input type="password" id="admin-password" placeholder="Enter admin password">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="admin-panel" style="display: none;">
+            <div id="vote-summary">
+                <div class="vote-count" id="yes-count">A favor: 0</div>
+                <div class="vote-count" id="no-count">En contra: 0</div>
+                <div class="vote-count" id="abstain-count">Abstención: 0</div>
+            </div>
+            <div id="senator-list"></div>
+            <button onclick="saveVotes()">Save Votes</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

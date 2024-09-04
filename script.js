@@ -44,6 +44,16 @@ const senators = [
     { id: 43, name: "Amalia García Medina", state: "Lista Nacional", party: "Movimiento Ciudadano", vote: null }
 ];
 
+function loadVotes() {
+    const savedVotes = localStorage.getItem('senatorVotes');
+    if (savedVotes) {
+        const votes = JSON.parse(savedVotes);
+        senators.forEach(senator => {
+            senator.vote = votes[senator.id] || null;
+        });
+    }
+}
+
 function updateVoteSummary() {
     const yesCount = senators.filter(s => s.vote === 'a_favor').length;
     const noCount = senators.filter(s => s.vote === 'en_contra').length;
@@ -52,15 +62,6 @@ function updateVoteSummary() {
     document.getElementById('yes-count').textContent = `A favor: ${yesCount}`;
     document.getElementById('no-count').textContent = `En contra: ${noCount}`;
     document.getElementById('abstain-count').textContent = `Abstención: ${abstainCount}`;
-}
-
-function vote(senatorId, voteType) {
-    const senator = senators.find(s => s.id === senatorId);
-    if (senator) {
-        senator.vote = voteType;
-        updateVoteSummary();
-        renderSenators();
-    }
 }
 
 function renderSenators() {
@@ -77,9 +78,6 @@ function renderSenators() {
                 <span class="senator-party">${senator.party}</span>
             </div>
             <div class="senator-vote">Voto: ${getVoteText(senator.vote)}</div>
-            <button class="vote-button vote-yes ${senator.vote === 'a_favor' ? 'selected' : ''}" onclick="vote(${senator.id}, 'a_favor')">A favor</button>
-            <button class="vote-button vote-no ${senator.vote === 'en_contra' ? 'selected' : ''}" onclick="vote(${senator.id}, 'en_contra')">En contra</button>
-            <button class="vote-button vote-abstain ${senator.vote === 'abstencion' ? 'selected' : ''}" onclick="vote(${senator.id}, 'abstencion')">Abstención</button>
         `;
         senatorList.appendChild(senatorCard);
     });
@@ -99,5 +97,15 @@ function getVoteText(vote) {
 }
 
 // Initial render
+loadVotes();
 updateVoteSummary();
 renderSenators();
+
+// Add auto-refresh functionality
+setInterval(() => {
+    loadVotes();
+    updateVoteSummary();
+    renderSenators();
+}, 60000); // Refresh every minute
+
+window.senators = senators;
