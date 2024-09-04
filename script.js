@@ -69,7 +69,7 @@ function renderSenators() {
 
     senators.forEach(senator => {
         const senatorCard = document.createElement('div');
-        senatorCard.className = 'senator-card';
+        senatorCard.className = `senator-card ${senator.vote ? 'vote-' + senator.vote : ''}`;
         senatorCard.innerHTML = `
             <div class="senator-name">${senator.name}</div>
             <div class="senator-info">

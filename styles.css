@@ -45,8 +45,8 @@ main {
     border: 2px solid #000;
 }
 
-#yes-count { background-color: #4CAF50; color: white; }
-#no-count { background-color: #F44336; color: white; }
+#yes-count { background-color: #F44336; color: white; } /* Changed to red */
+#no-count { background-color: #4CAF50; color: white; } /* Changed to green */
 #abstain-count { background-color: #FFC107; }
 
 #senator-list {
@@ -61,6 +61,22 @@ main {
     padding: 1rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border: 1px solid #000;
+    transition: background-color 0.3s;
+}
+
+.senator-card.vote-a_favor {
+    background-color: #F44336; /* Changed to red */
+    color: white;
+}
+
+.senator-card.vote-en_contra {
+    background-color: #4CAF50; /* Changed to green */
+    color: white;
+}
+
+.senator-card.vote-abstencion {
+    background-color: #FFC107;
+    color: black;
 }
 
 .senator-name {
@@ -90,27 +106,31 @@ main {
     transition: background-color 0.3s, color 0.3s;
 }
 
-.vote-button:hover {
-    background-color: #000;
-    color: #fff;
+.senator-card.vote-a_favor .vote-button,
+.senator-card.vote-en_contra .vote-button,
+.senator-card.vote-abstencion .vote-button {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: inherit;
 }
 
-.vote-button.selected {
-    color: white;
+.senator-card.vote-a_favor .vote-button.selected,
+.senator-card.vote-en_contra .vote-button.selected,
+.senator-card.vote-abstencion .vote-button.selected {
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
-.vote-yes:hover { background-color: #4CAF50; border-color: #4CAF50; }
-.vote-no:hover { background-color: #F44336; border-color: #F44336; }
-.vote-abstain:hover { background-color: #FFC107; border-color: #FFC107; }
+.vote-yes:hover { background-color: #F44336; border-color: #F44336; } /* Changed to red */
+.vote-no:hover { background-color: #4CAF50; border-color: #4CAF50; } /* Changed to green */
 
 .vote-yes.selected { 
-    background-color: #4CAF50; 
-    border-color: #4CAF50; 
+    background-color: #F44336; /* Changed to red */
+    border-color: #F44336; 
 }
 
 .vote-no.selected { 
-    background-color: #F44336; 
-    border-color: #F44336; 
+    background-color: #4CAF50; /* Changed to green */
+    border-color: #4CAF50; 
 }
 
 .vote-abstain.selected { 
