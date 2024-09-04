@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+header {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-top: 0;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+#vote-summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+
+.vote-count {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+#yes-count { background-color: #4CAF50; color: white; }
+#no-count { background-color: #F44336; color: white; }
+#abstain-count { background-color: #FFC107; }
+
+#senator-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.senator-card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #000;
+}
+
+.senator-name {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.senator-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.senator-vote {
+    margin-bottom: 0.5rem;
+}
+
+.vote-button {
+    margin: 0.2rem;
+    padding: 0.5rem;
+    border: 1px solid #000;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.vote-button:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.vote-button.selected {
+    color: white;
+}
+
+.vote-yes:hover { background-color: #4CAF50; border-color: #4CAF50; }
+.vote-no:hover { background-color: #F44336; border-color: #F44336; }
+.vote-abstain:hover { background-color: #FFC107; border-color: #FFC107; }
+
+.vote-yes.selected { 
+    background-color: #4CAF50; 
+    border-color: #4CAF50; 
+}
+
+.vote-no.selected { 
+    background-color: #F44336; 
+    border-color: #F44336; 
+}
+
+.vote-abstain.selected { 
+    background-color: #FFC107; 
+    border-color: #FFC107; 
+    color: black;
+}
